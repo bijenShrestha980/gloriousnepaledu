@@ -131,7 +131,7 @@ export default function Navigation() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-md">
       {/* Top bar */}
-      <div className="bg-gray-800 text-white py-2 px-4">
+      <div className="bg-gray-800 text-white py-2 px-4 hidden md:block">
         <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
           <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 mb-2 sm:mb-0">
             <span className="text-xs sm:text-sm flex items-center">
