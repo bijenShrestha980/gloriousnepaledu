@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { toast } from "@/components/ui/use-toast"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { toast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   fullName: z.string().min(2, {
@@ -30,10 +37,10 @@ const formSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
-})
+});
 
 export default function EnquiryPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,33 +51,33 @@ export default function EnquiryPage() {
       email: "",
       message: "",
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
       // Here you would typically send the form data to your backend
-      console.log(values)
+      console.log(values);
       toast({
         title: "Enquiry Submitted",
         description: "We will get back to you soon.",
-      })
-      form.reset()
+      });
+      form.reset();
     } catch (error) {
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_enquiry_-9kjfDVtC12ght1sssiC9Qrxamdj93v.png')] bg-cover bg-center py-16">
+      <section className="relative bg-[url('/placeholder.svg')] bg-cover bg-center py-16">
         <div className="absolute inset-0 bg-black/50" />
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">
@@ -91,7 +98,10 @@ export default function EnquiryPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <FormField
                   control={form.control}
                   name="fullName"
@@ -133,7 +143,10 @@ export default function EnquiryPage() {
                         Phone Number <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your phone number" {...field} />
+                        <Input
+                          placeholder="Enter your phone number"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -149,7 +162,11 @@ export default function EnquiryPage() {
                         Email <span className="text-red-500">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your email" type="email" {...field} />
+                        <Input
+                          placeholder="Enter your email"
+                          type="email"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -174,25 +191,33 @@ export default function EnquiryPage() {
                             <FormControl>
                               <RadioGroupItem value="preparation" />
                             </FormControl>
-                            <FormLabel className="font-normal">Preparation Classes</FormLabel>
+                            <FormLabel className="font-normal">
+                              Preparation Classes
+                            </FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
                               <RadioGroupItem value="language" />
                             </FormControl>
-                            <FormLabel className="font-normal">Language Classes</FormLabel>
+                            <FormLabel className="font-normal">
+                              Language Classes
+                            </FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
                               <RadioGroupItem value="abroad" />
                             </FormControl>
-                            <FormLabel className="font-normal">Abroad Study</FormLabel>
+                            <FormLabel className="font-normal">
+                              Abroad Study
+                            </FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
                               <RadioGroupItem value="computer" />
                             </FormControl>
-                            <FormLabel className="font-normal">Computer Classes</FormLabel>
+                            <FormLabel className="font-normal">
+                              Computer Classes
+                            </FormLabel>
                           </FormItem>
                         </RadioGroup>
                       </FormControl>
@@ -208,14 +233,22 @@ export default function EnquiryPage() {
                     <FormItem>
                       <FormLabel>Message</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Write your message here" className="min-h-[150px]" {...field} />
+                        <Textarea
+                          placeholder="Write your message here"
+                          className="min-h-[150px]"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
 
-                <Button type="submit" className="w-full md:w-auto" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="w-full md:w-auto"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
               </form>
@@ -224,6 +257,5 @@ export default function EnquiryPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

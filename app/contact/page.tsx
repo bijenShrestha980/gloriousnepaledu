@@ -70,7 +70,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_contact_-ca45E5uPfAtz2bigkqU8PQMOGGXZGM.png')] bg-cover bg-center py-16">
+      <section className="relative bg-[url('/placeholder.svg')] bg-cover bg-center py-16">
         <div className="absolute inset-0 bg-black/50" />
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">

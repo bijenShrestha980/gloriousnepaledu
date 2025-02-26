@@ -53,8 +53,7 @@ module.exports = {
         },
       },
       backgroundImage: {
-        "mountain-pattern":
-          "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_.png-MHYBIC0cdRPkkPG8Rk3FTUML77nDCS.jpeg')",
+        "mountain-pattern": "url('/placeholder.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -64,5 +63,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
-
+};

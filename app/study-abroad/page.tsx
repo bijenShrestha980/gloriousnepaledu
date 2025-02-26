@@ -5,29 +5,25 @@ import { ArrowRight } from "lucide-react";
 const countries = [
   {
     name: "Australia",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_australia_-2c5OTHcEQQFZ8uykaJ9tNP25nCiTo6.png",
+    image: "/placeholder.svg",
     description: "World-class education in a multicultural environment",
     link: "/study-abroad/australia",
   },
   {
     name: "USA",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/usa-study-abroad-D35HkFWZqI8V3gF7q9YywTFaFmI9lb.jpg",
+    image: "/placeholder.svg",
     description: "Leading universities and diverse opportunities",
     link: "/study-abroad/usa",
   },
   {
     name: "UK",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/uk-study-abroad-kRcPwp0keGGgobFEHFsyETQQDwRMhw.jpg",
+    image: "/placeholder.svg",
     description: "Traditional excellence in education",
     link: "/study-abroad/uk",
   },
   {
     name: "Canada",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/canada-study-abroad-HlbM3qXu4KrsGcrCOwBts8I3FRLSx0.jpg",
+    image: "/placeholder.svg",
     description: "Quality education with great career prospects",
     link: "/study-abroad/canada",
   },
@@ -40,7 +36,7 @@ export default function StudyAbroadPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_.png-MHYBIC0cdRPkkPG8Rk3FTUML77nDCS.jpeg')] bg-cover bg-center py-16">
+      <section className="relative bg-[url('/placeholder.svg')] bg-cover bg-center py-16">
         <div className="absolute inset-0 bg-black/50" />
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">

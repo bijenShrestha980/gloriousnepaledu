@@ -1,11 +1,11 @@
-import Image from "next/image"
-import { Check } from "lucide-react"
+import Image from "next/image";
+import { Check } from "lucide-react";
 
 export default function LanguageClassesPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative bg-[url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_language-classes_-grUWV5EHXhWPwU26DCZ3liSvBsuaRf.png')] bg-cover bg-center py-16">
+      <section className="relative bg-[url('/placeholder.svg')] bg-cover bg-center py-16">
         <div className="absolute inset-0 bg-black/50" />
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">
@@ -16,7 +16,9 @@ export default function LanguageClassesPage() {
               <span>›</span>
               <span>LANGUAGE CLASSES</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">LANGUAGE CLASSES</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              LANGUAGE CLASSES
+            </h1>
           </div>
         </div>
       </section>
@@ -29,21 +31,32 @@ export default function LanguageClassesPage() {
             <div className="md:col-span-2 space-y-8">
               {/* Korean Language */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-primary">Korean Language</h2>
+                <h2 className="text-2xl font-bold text-primary">
+                  Korean Language
+                </h2>
                 <div className="space-y-2">
                   <h3 className="font-semibold">EPS TOPIK, PBT/CBT</h3>
                   <ul className="space-y-2 pl-6">
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Normal / Special Course for the work permit job in South Korea</span>
+                      <span>
+                        Normal / Special Course for the work permit job in South
+                        Korea
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Skill Test Class with Korean language for EPS TOPIK Students</span>
+                      <span>
+                        Skill Test Class with Korean language for EPS TOPIK
+                        Students
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Basic Level Korean Language Class to Advance level Korean Language class for Students</span>
+                      <span>
+                        Basic Level Korean Language Class to Advance level
+                        Korean Language class for Students
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -55,31 +68,48 @@ export default function LanguageClassesPage() {
 
               {/* Japanese Language */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-primary">Japanese Language</h2>
+                <h2 className="text-2xl font-bold text-primary">
+                  Japanese Language
+                </h2>
                 <div className="space-y-2">
-                  <p>N5, N4, N3, N2, JLPT, NAT Test /J.sort/Top J Exam preparation class</p>
+                  <p>
+                    N5, N4, N3, N2, JLPT, NAT Test /J.sort/Top J Exam
+                    preparation class
+                  </p>
                 </div>
               </div>
 
               {/* English Language */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-primary">English Language</h2>
+                <h2 className="text-2xl font-bold text-primary">
+                  English Language
+                </h2>
                 <div className="space-y-2">
-                  <p>Fluency, Speaking, Writing, Reading and listening for practical and professional language</p>
+                  <p>
+                    Fluency, Speaking, Writing, Reading and listening for
+                    practical and professional language
+                  </p>
                 </div>
               </div>
 
               {/* Other Languages */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-primary">Other Language Courses</h2>
+                <h2 className="text-2xl font-bold text-primary">
+                  Other Language Courses
+                </h2>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                    <span>Chinese language- 3 Months Package course, Special class and normal class</span>
+                    <span>
+                      Chinese language- 3 Months Package course, Special class
+                      and normal class
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                    <span>German language-A1, A2, B1, B2 class special class</span>
+                    <span>
+                      German language-A1, A2, B1, B2 class special class
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -90,7 +120,9 @@ export default function LanguageClassesPage() {
 
               {/* Additional Courses */}
               <div className="space-y-4">
-                <h2 className="text-2xl font-bold text-primary">Additional Programs</h2>
+                <h2 className="text-2xl font-bold text-primary">
+                  Additional Programs
+                </h2>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -98,7 +130,10 @@ export default function LanguageClassesPage() {
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                    <span>Auditing/Accountancy Training (theoretical and practical ways)</span>
+                    <span>
+                      Auditing/Accountancy Training (theoretical and practical
+                      ways)
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -111,12 +146,17 @@ export default function LanguageClassesPage() {
                 </ul>
 
                 <div className="pl-6 mt-4">
-                  <h3 className="font-semibold mb-2">Computer Education Levels:</h3>
+                  <h3 className="font-semibold mb-2">
+                    Computer Education Levels:
+                  </h3>
                   <ul className="space-y-2">
                     <li>• Basic Course</li>
                     <li>• Diploma Course</li>
                     <li>• Advance Course</li>
-                    <li>• Professional training of Hardware /Software Computer education with Computer LAB</li>
+                    <li>
+                      • Professional training of Hardware /Software Computer
+                      education with Computer LAB
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -156,7 +196,7 @@ export default function LanguageClassesPage() {
             <div className="md:col-span-1">
               <div className="sticky top-24">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gloriousnepaledu.com_language-classes_-grUWV5EHXhWPwU26DCZ3liSvBsuaRf.png"
+                  src="/placeholder.svg"
                   alt="Korean Language Book"
                   width={400}
                   height={600}
@@ -167,7 +207,9 @@ export default function LanguageClassesPage() {
                   <ul className="space-y-2">
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Extra academic workshop programme and Training</span>
+                      <span>
+                        Extra academic workshop programme and Training
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <Check className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -189,6 +231,5 @@ export default function LanguageClassesPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
