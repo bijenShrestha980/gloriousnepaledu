@@ -1,9 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { ArrowRight, GraduationCap, Globe, BookOpen, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useEffect, useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  ArrowRight,
+  GraduationCap,
+  Globe,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const carouselImages = [
   {
@@ -18,27 +25,31 @@ const carouselImages = [
     src: "/placeholder.svg?height=600&width=1600&text=Language+Classes",
     alt: "Language Classes",
   },
-]
+];
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === carouselImages.length - 1 ? 0 : prev + 1))
-  }, [])
+    setCurrentSlide((prev) =>
+      prev === carouselImages.length - 1 ? 0 : prev + 1
+    );
+  }, []);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev === 0 ? carouselImages.length - 1 : prev - 1))
-  }, [])
+    setCurrentSlide((prev) =>
+      prev === 0 ? carouselImages.length - 1 : prev - 1
+    );
+  }, []);
 
   // Auto-slide functionality
   useEffect(() => {
     const interval = setInterval(() => {
-      nextSlide()
-    }, 5000)
+      nextSlide();
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [nextSlide])
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   return (
     <div className="flex flex-col">
@@ -63,21 +74,35 @@ export default function Home() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-white px-4">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                    {index === 0 && "Welcome to Glorious Nepal Educational Consultancy"}
+                    {index === 0 &&
+                      "Welcome to Glorious Nepal Educational Consultancy"}
                     {index === 1 && "Study Abroad Opportunities"}
                     {index === 2 && "Expert Language Classes"}
                   </h1>
                   <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto">
-                    {index === 0 && "Your gateway to global education and career success"}
-                    {index === 1 && "Explore international education in Australia, USA, UK, and more"}
-                    {index === 2 && "Learn languages from experienced instructors in small class sizes"}
+                    {index === 0 &&
+                      "Your gateway to global education and career success"}
+                    {index === 1 &&
+                      "Explore international education in Australia, USA, UK, and more"}
+                    {index === 2 &&
+                      "Learn languages from experienced instructors in small class sizes"}
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
                     <Link
-                      href={index === 0 ? "/services" : index === 1 ? "/study-abroad" : "/services/language-classes"}
+                      href={
+                        index === 0
+                          ? "/services"
+                          : index === 1
+                          ? "/study-abroad"
+                          : "/services/language-classes"
+                      }
                       className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-white shadow transition-colors hover:bg-primary/90"
                     >
-                      {index === 0 ? "Our Services" : index === 1 ? "Study Abroad" : "Language Classes"}
+                      {index === 0
+                        ? "Our Services"
+                        : index === 1
+                        ? "Study Abroad"
+                        : "Language Classes"}
                     </Link>
                     <Link
                       href="/contact"
@@ -140,19 +165,29 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-6">Why Choose Us</h2>
               <div className="space-y-4">
                 <p className="text-gray-600">
-                  Glorious Nepal Educational Consultancy (GNEC) is a trusted educational consultancy established with a
-                  vision to help students achieve their academic goals. We provide comprehensive guidance and support to
-                  students seeking quality education abroad.
+                  Glorious Nepal Educational Consultancy (GNEC) is a trusted
+                  educational consultancy established with a vision to help
+                  students achieve their academic goals. We provide
+                  comprehensive guidance and support to students seeking quality
+                  education abroad.
                 </p>
-                <h3 className="text-xl font-semibold">Objectives / Planning and Vision</h3>
+                <h3 className="text-xl font-semibold">
+                  Objectives / Planning and Vision
+                </h3>
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start">
                     <ArrowRight className="mr-2 h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>To provide quality guidance to students for their better future</span>
+                    <span>
+                      To provide quality guidance to students for their better
+                      future
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="mr-2 h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>To maintain professional relationships with our valued clients</span>
+                    <span>
+                      To maintain professional relationships with our valued
+                      clients
+                    </span>
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="mr-2 h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
@@ -160,7 +195,9 @@ export default function Home() {
                   </li>
                   <li className="flex items-start">
                     <ArrowRight className="mr-2 h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span>To provide accurate information and genuine counseling</span>
+                    <span>
+                      To provide accurate information and genuine counseling
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -180,7 +217,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4">Language Classes</h3>
               <p className="text-gray-600 mb-4">
-                Expert language instruction in English and other languages with experienced teachers.
+                Expert language instruction in English and other languages with
+                experienced teachers.
               </p>
               <Link
                 href="/services/language-classes"
@@ -195,7 +233,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4">Preparation Classes</h3>
               <p className="text-gray-600 mb-4">
-                Comprehensive test preparation for IELTS, TOEFL, and other standardized tests.
+                Comprehensive test preparation for IELTS, TOEFL, and other
+                standardized tests.
               </p>
               <Link
                 href="/services/preparation-classes"
@@ -210,9 +249,13 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-4">Study Abroad</h3>
               <p className="text-gray-600 mb-4">
-                Complete guidance for international education opportunities and admissions.
+                Complete guidance for international education opportunities and
+                admissions.
               </p>
-              <Link href="/study-abroad" className="text-primary hover:text-primary/80 inline-flex items-center">
+              <Link
+                href="/study-abroad"
+                className="text-primary hover:text-primary/80 inline-flex items-center"
+              >
                 Learn More <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
@@ -223,10 +266,15 @@ export default function Home() {
       {/* Photo Gallery */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Photo Gallery</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Photo Gallery
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="relative aspect-square group overflow-hidden rounded-lg">
+              <div
+                key={i}
+                className="relative aspect-square group overflow-hidden rounded-lg"
+              >
                 <Image
                   src={`/placeholder.svg?height=300&width=300&text=Gallery+${i}`}
                   alt={`Gallery image ${i}`}
@@ -257,12 +305,18 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Request a Call Back</h2>
               <p className="mb-8">
-                Leave your information and our team will contact you shortly to discuss your educational goals.
+                Leave your information and our team will contact you shortly to
+                discuss your educational goals.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -273,12 +327,17 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-gray-300">01-5425715</p>
+                    <p className="text-gray-300">01-5425715 | 01-5455699</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -289,12 +348,17 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-gray-300">gloriousnepalsedu@gmail.com</p>
+                    <p className="text-gray-300"> gloriousnepaledu@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -311,7 +375,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-medium">Address</p>
-                    <p className="text-gray-300">Loganshme-12, Lalitpur</p>
+                    <p className="text-gray-300">Lagankhel-12, Lalitpur</p>
                   </div>
                 </div>
               </div>
@@ -358,6 +422,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

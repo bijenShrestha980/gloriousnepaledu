@@ -1,15 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import * as z from "zod"
-import { MapPin, Phone, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { MapPin, Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -24,10 +31,10 @@ const formSchema = z.object({
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
-})
+});
 
 export default function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,26 +44,26 @@ export default function ContactPage() {
       phoneNumber: "",
       message: "",
     },
-  })
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
       // Here you would typically send the form data to your backend
-      console.log(values)
+      console.log(values);
       toast({
         title: "Message Sent",
         description: "We will get back to you soon.",
-      })
-      form.reset()
+      });
+      form.reset();
     } catch (error) {
       toast({
         title: "Error",
         description: "Something went wrong. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
   }
 
@@ -88,7 +95,7 @@ export default function ContactPage() {
                 <MapPin className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-xl font-bold mb-2">Head Office</h2>
-              <p>Logankhel-12, Lalitpur</p>
+              <p>Lagankhel-12, Lalitpur</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
@@ -105,15 +112,20 @@ export default function ContactPage() {
               </div>
               <h2 className="text-xl font-bold mb-2">E-mail Address</h2>
               <p>gloriousacademy13@gmail.com</p>
-              <p>gloriousnepalsedu@gmail.com</p>
+              <p>gloriousnepaledu@gmail.com</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8 text-center">Send an Message</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center">
+              Send an Message
+            </h2>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-6"
+              >
                 <div className="grid md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
@@ -136,7 +148,11 @@ export default function ContactPage() {
                       <FormItem>
                         <FormLabel>Your Email</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your email" type="email" {...field} />
+                          <Input
+                            placeholder="Enter your email"
+                            type="email"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -151,7 +167,10 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Your Phone Number</FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter your phone number" {...field} />
+                        <Input
+                          placeholder="Enter your phone number"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -165,7 +184,11 @@ export default function ContactPage() {
                     <FormItem>
                       <FormLabel>Comment</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Write your message here" className="min-h-[150px]" {...field} />
+                        <Textarea
+                          placeholder="Write your message here"
+                          className="min-h-[150px]"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -173,7 +196,11 @@ export default function ContactPage() {
                 />
 
                 <div className="text-center">
-                  <Button type="submit" className="w-full md:w-auto px-8" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full md:w-auto px-8"
+                    disabled={isSubmitting}
+                  >
                     {isSubmitting ? "Sending..." : "Send"}
                   </Button>
                 </div>
@@ -183,6 +210,5 @@ export default function ContactPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-
