@@ -1,6 +1,6 @@
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const countries = [
   {
@@ -12,23 +12,29 @@ const countries = [
   },
   {
     name: "USA",
-    image: "/placeholder.svg?height=400&width=600&text=USA",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/usa-study-abroad-D35HkFWZqI8V3gF7q9YywTFaFmI9lb.jpg",
     description: "Leading universities and diverse opportunities",
     link: "/study-abroad/usa",
   },
   {
     name: "UK",
-    image: "/placeholder.svg?height=400&width=600&text=UK",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/uk-study-abroad-kRcPwp0keGGgobFEHFsyETQQDwRMhw.jpg",
     description: "Traditional excellence in education",
     link: "/study-abroad/uk",
   },
   {
     name: "Canada",
-    image: "/placeholder.svg?height=400&width=600&text=Canada",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/canada-study-abroad-HlbM3qXu4KrsGcrCOwBts8I3FRLSx0.jpg",
     description: "Quality education with great career prospects",
     link: "/study-abroad/canada",
   },
-]
+];
+
+export const dynamicParams = false;
+export const revalidate = 3600; // Revalidate every hour
 
 export default function StudyAbroadPage() {
   return (
@@ -39,7 +45,9 @@ export default function StudyAbroadPage() {
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-white">
             <h1 className="text-4xl font-bold mb-4">Study Abroad</h1>
-            <p className="text-lg">Your gateway to international education opportunities</p>
+            <p className="text-lg">
+              Your gateway to international education opportunities
+            </p>
           </div>
         </div>
       </section>
@@ -49,7 +57,11 @@ export default function StudyAbroadPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {countries.map((country) => (
-              <Link key={country.name} href={country.link} className="group block">
+              <Link
+                key={country.name}
+                href={country.link}
+                className="group block"
+              >
                 <div className="relative aspect-[4/3] mb-4">
                   <Image
                     src={country.image || "/placeholder.svg"}
@@ -58,7 +70,9 @@ export default function StudyAbroadPage() {
                     className="object-cover rounded-lg"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary">{country.name}</h3>
+                <h3 className="text-xl font-bold mb-2 group-hover:text-primary">
+                  {country.name}
+                </h3>
                 <p className="text-gray-600 mb-4">{country.description}</p>
                 <span className="text-primary inline-flex items-center">
                   Learn More <ArrowRight className="ml-2 h-4 w-4" />
@@ -72,19 +86,28 @@ export default function StudyAbroadPage() {
       {/* Why Study Abroad */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Study Abroad?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Why Study Abroad?
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-4">Global Recognition</h3>
-              <p className="text-gray-600">Earn internationally recognized degrees from prestigious institutions.</p>
+              <p className="text-gray-600">
+                Earn internationally recognized degrees from prestigious
+                institutions.
+              </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-4">Career Opportunities</h3>
-              <p className="text-gray-600">Access to global job markets and better career prospects.</p>
+              <p className="text-gray-600">
+                Access to global job markets and better career prospects.
+              </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-bold mb-4">Cultural Experience</h3>
-              <p className="text-gray-600">Immerse yourself in new cultures and expand your worldview.</p>
+              <p className="text-gray-600">
+                Immerse yourself in new cultures and expand your worldview.
+              </p>
             </div>
           </div>
         </div>
@@ -133,6 +156,5 @@ export default function StudyAbroadPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
-

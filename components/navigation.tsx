@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname, useRouter } from "next/navigation"
-import { Menu, X, Search } from "lucide-react"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { Menu, X, Search } from "lucide-react";
 
 const navItems = [
   { name: "HOME", path: "/" },
@@ -30,7 +30,7 @@ const navItems = [
   { name: "GALLERY", path: "/gallery" },
   { name: "ENQUIRY", path: "/enquiry" },
   { name: "CONTACT", path: "/contact" },
-]
+];
 
 // Mock search results for demonstration
 const mockSearchResults = [
@@ -39,92 +39,94 @@ const mockSearchResults = [
   { title: "Korean Language Classes", path: "/services/language-classes" },
   { title: "Contact Us", path: "/contact" },
   { title: "About EduConsult", path: "/about" },
-]
+];
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
-  const [searchResults, setSearchResults] = useState<typeof mockSearchResults>([])
-  const searchInputRef = useRef<HTMLInputElement>(null)
-  const pathname = usePathname()
-  const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<typeof mockSearchResults>(
+    []
+  );
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
   // Check if we're on mobile
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
+      setIsMobile(window.innerWidth < 1024);
+    };
 
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
 
     return () => {
-      window.removeEventListener("resize", checkIfMobile)
-    }
-  }, [])
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   // Focus search input when search is opened
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus()
+      searchInputRef.current.focus();
     }
-  }, [isSearchOpen])
+  }, [isSearchOpen]);
 
   // Close search on escape key
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsSearchOpen(false)
+        setIsSearchOpen(false);
       }
-    }
-    window.addEventListener("keydown", handleEsc)
+    };
+    window.addEventListener("keydown", handleEsc);
     return () => {
-      window.removeEventListener("keydown", handleEsc)
-    }
-  }, [])
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   const toggleMobileSubmenu = (name: string) => {
-    setMobileSubmenu(mobileSubmenu === name ? null : name)
-  }
+    setMobileSubmenu(mobileSubmenu === name ? null : name);
+  };
 
   const isActive = (path: string) => {
-    return pathname === path || pathname.startsWith(`${path}/`)
-  }
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value
-    setSearchQuery(query)
+    const query = e.target.value;
+    setSearchQuery(query);
 
     if (query.length > 1) {
       // Filter mock results based on query
       const filteredResults = mockSearchResults.filter((result) =>
-        result.title.toLowerCase().includes(query.toLowerCase()),
-      )
-      setSearchResults(filteredResults)
+        result.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(filteredResults);
     } else {
-      setSearchResults([])
+      setSearchResults([]);
     }
-  }
+  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (searchQuery.trim() && searchResults.length > 0) {
-      router.push(searchResults[0].path)
-      setIsSearchOpen(false)
-      setSearchQuery("")
-      setSearchResults([])
+      router.push(searchResults[0].path);
+      setIsSearchOpen(false);
+      setSearchQuery("");
+      setSearchResults([]);
     }
-  }
+  };
 
   const handleSearchResultClick = (path: string) => {
-    router.push(path)
-    setIsSearchOpen(false)
-    setSearchQuery("")
-    setSearchResults([])
-  }
+    router.push(path);
+    setIsSearchOpen(false);
+    setSearchQuery("");
+    setSearchResults([]);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-md">
@@ -133,7 +135,11 @@ export default function Navigation() {
         <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center text-sm">
           <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 mb-2 sm:mb-0">
             <span className="text-xs sm:text-sm flex items-center">
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path
                   fillRule="evenodd"
                   d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
@@ -143,14 +149,22 @@ export default function Navigation() {
               Loganshme-12, Lalitpur
             </span>
             <span className="text-xs sm:text-sm flex items-center">
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
               gloriousnepalsedu@gmail.com
             </span>
             <span className="text-xs sm:text-sm flex items-center">
-              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg
+                className="w-4 h-4 mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               01-5425715
@@ -158,7 +172,12 @@ export default function Navigation() {
           </div>
           <div className="flex items-center space-x-3">
             <a href="#" className="hover:text-gray-300" aria-label="Facebook">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                className="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   fillRule="evenodd"
                   d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
@@ -167,12 +186,22 @@ export default function Navigation() {
               </svg>
             </a>
             <a href="#" className="hover:text-gray-300" aria-label="Twitter">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                className="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
               </svg>
             </a>
             <a href="#" className="hover:text-gray-300" aria-label="YouTube">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                className="w-4 h-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path
                   fillRule="evenodd"
                   d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
@@ -195,8 +224,12 @@ export default function Navigation() {
             className="text-primary"
           />
           <div>
-            <span className="text-xl font-bold text-primary block leading-tight">Glorious Nepal</span>
-            <span className="text-xs text-gray-600 block leading-tight">Educational Consultancy</span>
+            <span className="text-xl font-bold text-primary block leading-tight">
+              Glorious Nepal
+            </span>
+            <span className="text-xs text-gray-600 block leading-tight">
+              Educational Consultancy
+            </span>
           </div>
         </Link>
 
@@ -237,7 +270,9 @@ export default function Navigation() {
                               <Link
                                 href={subitem.path}
                                 className={`flex w-full items-center justify-between rounded-sm px-3 py-2 text-sm transition-colors hover:bg-gray-100 ${
-                                  isActive(subitem.path) ? "text-primary" : "text-gray-700"
+                                  isActive(subitem.path)
+                                    ? "text-primary"
+                                    : "text-gray-700"
                                 }`}
                               >
                                 {subitem.name}
@@ -262,7 +297,9 @@ export default function Navigation() {
                                     key={subsubitem.name}
                                     href={subsubitem.path}
                                     className={`block rounded-sm px-3 py-2 text-sm transition-colors hover:bg-gray-100 ${
-                                      isActive(subsubitem.path) ? "text-primary" : "text-gray-700"
+                                      isActive(subsubitem.path)
+                                        ? "text-primary"
+                                        : "text-gray-700"
                                     }`}
                                   >
                                     {subsubitem.name}
@@ -274,7 +311,9 @@ export default function Navigation() {
                             <Link
                               href={subitem.path}
                               className={`block rounded-sm px-3 py-2 text-sm transition-colors hover:bg-gray-100 ${
-                                isActive(subitem.path) ? "text-primary" : "text-gray-700"
+                                isActive(subitem.path)
+                                  ? "text-primary"
+                                  : "text-gray-700"
                               }`}
                             >
                               {subitem.name}
@@ -288,7 +327,9 @@ export default function Navigation() {
                   <Link
                     href={item.path}
                     className={`px-3 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                      isActive(item.path) ? "text-primary border-b-2 border-primary" : "text-gray-700"
+                      isActive(item.path)
+                        ? "text-primary border-b-2 border-primary"
+                        : "text-gray-700"
                     }`}
                   >
                     {item.name}
@@ -356,7 +397,9 @@ export default function Navigation() {
                     </button>
                     <div
                       className={`ml-4 mt-1 border-l-2 border-gray-200 pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
-                        mobileSubmenu === item.name ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                        mobileSubmenu === item.name
+                          ? "max-h-screen opacity-100"
+                          : "max-h-0 opacity-0"
                       }`}
                     >
                       {item.submenu.map((subitem) => (
@@ -364,9 +407,13 @@ export default function Navigation() {
                           {subitem.submenu ? (
                             <div>
                               <button
-                                onClick={() => toggleMobileSubmenu(subitem.name)}
+                                onClick={() =>
+                                  toggleMobileSubmenu(subitem.name)
+                                }
                                 className={`flex w-full items-center justify-between py-2 text-sm ${
-                                  isActive(subitem.path) ? "text-primary" : "text-gray-700"
+                                  isActive(subitem.path)
+                                    ? "text-primary"
+                                    : "text-gray-700"
                                 }`}
                               >
                                 {subitem.name}
@@ -381,7 +428,9 @@ export default function Navigation() {
                                   strokeLinecap="round"
                                   strokeLinejoin="round"
                                   className={`h-4 w-4 transition-transform duration-300 ${
-                                    mobileSubmenu === subitem.name ? "rotate-180" : ""
+                                    mobileSubmenu === subitem.name
+                                      ? "rotate-180"
+                                      : ""
                                   }`}
                                 >
                                   <polyline points="6 9 12 15 18 9"></polyline>
@@ -389,7 +438,9 @@ export default function Navigation() {
                               </button>
                               <div
                                 className={`ml-4 mt-1 border-l-2 border-gray-200 pl-4 overflow-hidden transition-all duration-300 ease-in-out ${
-                                  mobileSubmenu === subitem.name ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+                                  mobileSubmenu === subitem.name
+                                    ? "max-h-screen opacity-100"
+                                    : "max-h-0 opacity-0"
                                 }`}
                               >
                                 {subitem.submenu.map((subsubitem) => (
@@ -397,7 +448,9 @@ export default function Navigation() {
                                     key={subsubitem.name}
                                     href={subsubitem.path}
                                     className={`block py-2 text-sm ${
-                                      isActive(subsubitem.path) ? "text-primary" : "text-gray-700"
+                                      isActive(subsubitem.path)
+                                        ? "text-primary"
+                                        : "text-gray-700"
                                     }`}
                                     onClick={() => setIsOpen(false)}
                                   >
@@ -410,7 +463,9 @@ export default function Navigation() {
                             <Link
                               href={subitem.path}
                               className={`block py-2 text-sm ${
-                                isActive(subitem.path) ? "text-primary" : "text-gray-700"
+                                isActive(subitem.path)
+                                  ? "text-primary"
+                                  : "text-gray-700"
                               }`}
                               onClick={() => setIsOpen(false)}
                             >
@@ -444,14 +499,20 @@ export default function Navigation() {
           <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl">
             <div className="p-4 border-b flex justify-between items-center">
               <h3 className="text-lg font-medium">Search</h3>
-              <button onClick={() => setIsSearchOpen(false)} className="text-gray-500 hover:text-gray-700">
+              <button
+                onClick={() => setIsSearchOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 <X size={20} />
               </button>
             </div>
             <div className="p-4">
               <form onSubmit={handleSearchSubmit}>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+                  <Search
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                    size={18}
+                  />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -479,17 +540,20 @@ export default function Navigation() {
               )}
 
               {searchQuery.length > 1 && searchResults.length === 0 && (
-                <div className="mt-4 text-center py-8 text-gray-500">No results found for "{searchQuery}"</div>
+                <div className="mt-4 text-center py-8 text-gray-500">
+                  No results found for "{searchQuery}"
+                </div>
               )}
 
               {searchQuery.length <= 1 && (
-                <div className="mt-4 text-center py-4 text-gray-500">Type at least 2 characters to search</div>
+                <div className="mt-4 text-center py-4 text-gray-500">
+                  Type at least 2 characters to search
+                </div>
               )}
             </div>
           </div>
         </div>
       )}
     </header>
-  )
+  );
 }
-
